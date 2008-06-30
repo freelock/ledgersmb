@@ -51,7 +51,9 @@ sub save {
     my $self = shift @_;
     $self->set_entity_class();
     my ($ref) = $self->exec_method(funcname => 'company_save');
-    $self->{id} = $ref->{company_save};
+    $self->{entity_id} = (values %$ref)[0];
+    $self->get;
+    $self->get_metadata;
     $self->{dbh}->commit;
 }
 
@@ -185,7 +187,7 @@ sub get {
     my $self = shift @_;
 
     $self->set_entity_class();
-    my ($ref) = $self->exec_method(funcname => 'entity__retrieve_credit');
+    my ($ref) = $self->exec_method(funcname => 'company_retrieve');
     $self->merge($ref);
     $self->{threshold} = $self->format_amount(amount => $self->{threshold});
 
