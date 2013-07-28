@@ -2,6 +2,7 @@
 #
 # Vim swap files
 *.swp
+*~
 #
 # Perl Module::Build, Module::Install, ExtUtils::MakeMaker
 META.yml
